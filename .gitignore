@@ -1,0 +1,14 @@
+.venv/
+__pycache__/
+*.pyc
+_ui_workdir/
+_frames_raw/
+_scratch_preview_png/
+
+# Generated run artifacts (large binaries) -- produced locally by running
+# the pipeline (./run.sh or src/main.py), not committed to keep the repo
+# lightweight. See README.md for how to regenerate them.
+/frames/
+/masks/
+/output/
+/input/
