@@ -135,7 +135,7 @@ def run_export(video_path, mask_threshold, alpha_softness, edge_feather, lower_c
         raise gr.Error(f"Errore durante l'esportazione: {e}\n{tb[-1500:]}")
 
     files = []
-    for key in ("webm", "mov", "webm_with_text", "preview_black", "preview_white",
+    for key in ("webm", "mov", "gif", "webm_with_text", "preview_black", "preview_white",
                 "preview_blue", "mask_preview"):
         val = results.get(key)
         if val and os.path.isfile(val):

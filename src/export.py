@@ -90,6 +90,26 @@ def encode_prores4444(png_dir, fps, out_path, prefix="frame"):
         return None
 
 
+def encode_gif_alpha(png_dir, fps, out_path, prefix="frame"):
+    """Animated GIF with a transparent background. GIF only supports 1-bit
+    (on/off) transparency, not the soft alpha the RGBA source has, so the
+    alpha channel is thresholded -- this is a format limitation, not a
+    matting defect (the WebM/ProRes/PNG outputs keep full soft alpha)."""
+    pattern = os.path.join(png_dir, f"{prefix}_%05d.png")
+    filter_chain = (
+        "split[s0][s1];"
+        "[s0]palettegen=reserve_transparent=1:transparency_color=000000[p];"
+        "[s1][p]paletteuse=alpha_threshold=128:dither=bayer"
+    )
+    cmd = [
+        "ffmpeg", "-y", "-framerate", str(fps), "-i", pattern,
+        "-vf", filter_chain, "-loop", "0",
+        out_path,
+    ]
+    _run_ffmpeg(cmd)
+    return out_path
+
+
 def encode_mp4(png_dir, fps, out_path, prefix="frame"):
     pattern = os.path.join(png_dir, f"{prefix}_%05d.png")
     cmd = [

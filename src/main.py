@@ -202,6 +202,11 @@ def run_pipeline_from_state(state, output_root, params=None, progress_cb=None):
     exp.encode_webm_alpha(frames_out_text_dir, fps, webm_text_path)
     results["webm_with_text"] = webm_text_path
 
+    log("Esportazione: GIF animata con sfondo trasparente...", progress_cb)
+    gif_path = os.path.join(output_dir, "water_ring_transparent.gif")
+    exp.encode_gif_alpha(frames_out_dir, fps, gif_path)
+    results["gif"] = gif_path
+
     log("Esportazione: preview compositate (nero / bianco / azzurro)...", progress_cb)
     scratch_dir = os.path.join(output_root, "_scratch_preview_png")
     black_dir = os.path.join(scratch_dir, "black")

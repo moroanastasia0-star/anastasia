@@ -74,6 +74,12 @@ Si aprirà automaticamente una pagina nel browser con l'interfaccia grafica.
 - **`output/water_ring_with_text.webm`** — versione con anello d'acqua
   **+ il testo originale** (dove è stato possibile separarlo in modo
   affidabile).
+- **`output/water_ring_transparent.gif`** — GIF animata con sfondo
+  trasparente (comoda da inserire ovunque, incluso PowerPoint, senza
+  bisogno di codec speciali). Nota: il formato GIF supporta solo
+  trasparenza "a scatto" (un pixel è trasparente oppure no, senza sfumature
+  intermedie), quindi le trasparenze più sottili dell'acqua sono meno
+  morbide rispetto a WebM/ProRes/PNG.
 - **`frames/water_ring_frames/`** — tutti i singoli fotogrammi PNG RGBA
   trasparenti (solo acqua), stesso ordine/numero del video originale.
 - **`frames/water_ring_with_text_frames/`** — stessa cosa con il testo.
